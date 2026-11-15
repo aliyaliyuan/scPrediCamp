@@ -1,0 +1,81 @@
+{
+ "cells": [
+  "Periportal_Hepatocyte",
+  "LSEC",
+  "Keratin"
+ ],
+ "oids": {
+  "OID30771": "A1BG_P04217_OID30771_v1_Inflammation_II_sample.gz",
+  "OID30236": "AAMDC_Q9H7C9_OID30236_v1_Cardiometabolic_II_sample.gz"
+ },
+ "loci": [
+  {
+   "anchor": "A1BG",
+   "chr": "chr19",
+   "genes": [
+    "A1BG",
+    "TRIM28",
+    "ZBTB45",
+    "MZF1",
+    "ZNF446",
+    "ZNF418",
+    "SLC27A5",
+    "ZNF324",
+    "UBE2M",
+    "ZNF132",
+    "ZNF324B",
+    "ZNF584"
+   ]
+  },
+  {
+   "anchor": "NRBP1",
+   "chr": "chr2",
+   "genes": [
+    "NRBP1",
+    "IFT172",
+    "KRTCAP3",
+    "GCKR",
+    "ZNF513",
+    "EIF2B4",
+    "FNDC4",
+    "SNX17",
+    "PPM1G",
+    "SPATA31H1",
+    "SLC5A6",
+    "MPV17"
+   ]
+  },
+  {
+   "anchor": "AAMDC",
+   "chr": "chr11",
+   "genes": [
+    "AAMDC",
+    "INTS4",
+    "KCTD14",
+    "NDUFC2-KCTD14",
+    "THRSP",
+    "NDUFC2",
+    "RSF1",
+    "ALG8",
+    "KCTD21",
+    "USP35",
+    "AQP11",
+    "PAK1"
+   ]
+  }
+ ],
+ "regions": {
+  "chr11": [
+   76322299,
+   79213370
+  ],
+  "chr19": [
+   56947045,
+   58586654
+  ],
+  "chr2": [
+   26310155,
+   28579891
+  ]
+ }
+}
