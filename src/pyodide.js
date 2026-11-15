@@ -3,7 +3,7 @@ const VERSION = '0.26.4'
 // Set VITE_PYODIDE_BASE at build time to serve Pyodide from somewhere else (for example your own copy).
 const BASE = new URL(import.meta.env.VITE_PYODIDE_BASE || `https://cdn.jsdelivr.net/pyodide/v${VERSION}/full/`, document.baseURI).href
 // The lessons' own Python, served from public/py/
-const MODULES = ['spredixcan_lite.py', 'postprocess_lite.py']
+const MODULES = ['preprocess_lite.py', 'spredixcan_lite.py', 'postprocess_lite.py']
 let ready
 
 export function getPyodide(onStatus = () => {}) {

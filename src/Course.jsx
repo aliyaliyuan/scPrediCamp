@@ -1,5 +1,5 @@
 import { BUILT } from './built.js'
-import { LESSONS, MODE_LABEL, PARTS } from './lessons.js'
+import { ATLAS_URL, LESSONS, MODE_LABEL, PARTS } from './lessons.js'
 
 function Row({ l, done }) {
   const built = Boolean(BUILT[l.n])
@@ -34,7 +34,10 @@ export default function Course({ done }) {
       <div className="paths">
         <div className="path">
           <h3>Build your own models</h3>
-          <p>Start from single-cell RNA-seq, such as a Human Cell Atlas dataset, and train a model for each cell type.</p>
+          <p>
+            Start from single-cell RNA-seq, such as the{' '}
+            <a href={ATLAS_URL} target="_blank" rel="noreferrer">Human Liver Cell Atlas</a>, and train a model for each cell type.
+          </p>
           <p className="goes">Lessons 1 to 5</p>
         </div>
         <div className="path">
@@ -58,7 +61,10 @@ export default function Course({ done }) {
       {PARTS.map((p) => (
         <div className="section" key={p.n}>
           <h2>{p.title}</h2>
-          <p className="sub">{p.sub}</p>
+          <p className="sub">
+            {p.sub}
+            {p.n === 1 && <> The lessons use a small sample of the <a href={ATLAS_URL} target="_blank" rel="noreferrer">Human Liver Cell Atlas</a>.</>}
+          </p>
           <ul className="lessons">
             {LESSONS.filter((l) => l.part === p.n).map((l) => <Row key={l.n} l={l} done={done[l.n]} />)}
           </ul>

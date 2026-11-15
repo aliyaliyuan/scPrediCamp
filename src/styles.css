@@ -122,3 +122,7 @@ tr.hit .zbar { background: var(--cyan); }
 .terms dt { color: var(--cyan); white-space: nowrap; }
 .terms dd { margin: 0; color: var(--soft); }
 th.text, td.text { text-align: left; }
+.scripts { display: flex; flex-direction: column; gap: .5rem; }
+.script { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.script summary { cursor: pointer; padding: .5rem .8rem; color: var(--cyan); font-family: var(--mono); font-size: .82rem; }
+.script pre { margin: 0; padding: .8rem; border-top: 1px solid var(--line); font-family: var(--mono); font-size: .75rem; line-height: 1.5; overflow: auto; max-height: 24rem; color: var(--soft); white-space: pre; }

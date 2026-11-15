@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "sync-scripts": "node -e \"require('fs').copyFileSync('../ctPred/ctPred_preprocess.py','public/scripts/ctPred_preprocess.py')\"",
+    "predev": "npm run sync-scripts",
+    "prebuild": "npm run sync-scripts",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

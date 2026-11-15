@@ -1,2 +1,4 @@
 node_modules
 dist
+public/scripts/ctPred_preprocess.py
+__pycache__

@@ -12,13 +12,31 @@ export const fmtP = (p) => (p == null ? '' : p === 0 ? '< 1e-300' : p < 0.001 ? 
    lesson      entry from lessons.js
    starter     Python shown in the editor. It must leave a DataFrame called `results`.
    selectors   (manifest) => [{ id, label, options: [{ value, label }] }]   dropdowns above the code
-   prepare     (choice, manifest) => { files: [{ url, path }], globals: {NAME: value}, banner, outName }
+   prepare     (choice, manifest) => { files: [{ url, path }], globals: {NAME: value}, banner, outName, packages? }
+               `packages` are extra Pyodide packages to load, for example ['h5py']
    columns     [{ key, label?, fmt?, bar? }]   table columns; `bar` draws a bar scaled to the largest |value|
+               or (rows) => [...] when the columns depend on the result
+   scripts     [{ label, url }]   full pipeline scripts shown under the reading pane
    isHit       (row, rows) => bool   rows to highlight
    checkpoint  (rows) => { question, answer, right, hint }
    children    the reading pane
 */
-export default function LiveLesson({ lesson, starter, selectors, prepare, columns, isHit, checkpoint, onComplete, children }) {
+function ScriptViewer({ label, url }) {
+  const [src, setSrc] = useState(null)
+  const load = (e) => {
+    if (e.target.open && src === null) {
+      fetch(url).then((r) => (r.ok ? r.text() : Promise.reject())).then(setSrc).catch(() => setSrc('Could not load this script.'))
+    }
+  }
+  return (
+    <details className="script" onToggle={load}>
+      <summary>{label}</summary>
+      <pre>{src ?? 'Loading ...'}</pre>
+    </details>
+  )
+}
+
+export default function LiveLesson({ lesson, starter, selectors, prepare, columns: columnsProp, isHit, checkpoint, scripts, onComplete, children }) {
   const [manifest, setManifest] = useState(null)
   const [choice, setChoice] = useState({})
   const [code, setCode] = useState(starter)
@@ -42,6 +60,7 @@ export default function LiveLesson({ lesson, starter, selectors, prepare, column
   }, [sels])
   useEffect(() => { if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight }, [log])
 
+  const columns = useMemo(() => (typeof columnsProp === 'function' ? (rows ? columnsProp(rows) : []) : columnsProp), [columnsProp, rows])
   const cp = useMemo(() => (rows && checkpoint ? checkpoint(rows) : null), [rows, checkpoint])
   const barMax = useMemo(() => {
     const m = {}
@@ -61,6 +80,7 @@ export default function LiveLesson({ lesson, starter, selectors, prepare, column
       setStatus('Running')
       say('Fetching sample files ...')
       await Promise.all(job.files.map((f) => putFile(py, `${DATA}/${f.url}`, f.path)))
+      if (job.packages) await py.loadPackage(job.packages)
       py.setStdout({ batched: say })
       py.setStderr({ batched: say })
       Object.entries(job.globals).forEach(([k, v]) => py.globals.set(k, v))
@@ -98,6 +118,12 @@ export default function LiveLesson({ lesson, starter, selectors, prepare, column
         <div className="read-pane">
           <h1>{lesson.title}</h1>
           {children}
+          {scripts && (
+            <div className="scripts">
+              <p className="fine">Full scripts for running this step on your own data:</p>
+              {scripts.map((sc) => <ScriptViewer key={sc.url} {...sc} />)}
+            </div>
+          )}
         </div>
 
         <div className="do-pane">
