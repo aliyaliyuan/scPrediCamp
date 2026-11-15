@@ -21,12 +21,18 @@ repo Settings -> Pages -> Source: GitHub Actions.
 |---|---|
 | `src/lessons.js` | the course outline (nine lessons, two parts) |
 | `src/built.js` | lessons that are built; add a component here to make its row clickable |
-| `src/lessons/Lesson6.jsx` | Run S-PrediXcan for one protein and one cell type (live) |
+| `src/LiveLesson.jsx` | shared lesson layout: reading pane, editable Python, output, results table, checkpoint |
+| `src/lessons/Lesson6.jsx` | Run S-PrediXcan for one protein and one cell type |
+| `src/lessons/Lesson7.jsx` | Combine and filter results (port of `02format_output.R`) |
+| `src/lessons/Lesson8.jsx` | Label cis and trans associations (port of `03mapping.R`) |
 | `src/pyodide.js` | loads Python, numpy, pandas and sqlite3 in the browser |
-| `public/py/spredixcan_lite.py` | S-PrediXcan association in ~60 lines of pandas, used by the lessons |
+| `public/py/spredixcan_lite.py` | S-PrediXcan association in ~60 lines of pandas (lesson 6) |
+| `public/py/postprocess_lite.py` | combine/filter, cis/trans labels and BH FDR (lessons 7 and 8) |
 | `public/sample_data/` | small real sample: 36 genes around three loci, 3 cell types, 2 proteins |
 | `scripts/make_sample_data.py` | cuts `public/sample_data/` from the full inputs |
+| `scripts/make_mapping_sample.R` | gene and protein coordinates (GRCh38) for the sample genes |
 | `scripts/check_lite.py` | checks `spredixcan_lite.py` against the full MetaXcan pipeline output |
+| `scripts/check_postprocess.py` | runs the lesson 7 and 8 code on the sample and checks BH FDR against R |
 
 ## Sample data
 
@@ -36,6 +42,7 @@ Cut from the full inputs by `scripts/make_sample_data.py`:
 - `gwas/` the matching slices of two UKB-PPP GWAS files (A1BG, AAMDC)
 - `expected/` the full-genome pipeline's results for the same genes
 - `training/` pseudobulk counts, ctPred predicted expression and log tails for the same genes
+- `mapping/` gene start positions and Olink protein positions for the same genes (GRCh38)
 - `manifest.json` cell types, proteins and loci, read by the lessons
 
 `python scripts/check_lite.py` confirms the in-browser code reproduces the z-scores in `expected/`.

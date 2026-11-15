@@ -2,6 +2,8 @@
 const VERSION = '0.26.4'
 // Set VITE_PYODIDE_BASE at build time to serve Pyodide from somewhere else (for example your own copy).
 const BASE = new URL(import.meta.env.VITE_PYODIDE_BASE || `https://cdn.jsdelivr.net/pyodide/v${VERSION}/full/`, document.baseURI).href
+// The lessons' own Python, served from public/py/
+const MODULES = ['spredixcan_lite.py', 'postprocess_lite.py']
 let ready
 
 export function getPyodide(onStatus = () => {}) {
@@ -18,8 +20,13 @@ export function getPyodide(onStatus = () => {}) {
       const py = await window.loadPyodide({ indexURL: BASE })
       onStatus('Loading numpy, pandas and sqlite3 ...')
       await py.loadPackage(['numpy', 'pandas', 'sqlite3'])
-      const src = await (await fetch('py/spredixcan_lite.py')).text()
-      py.FS.writeFile('/home/pyodide/spredixcan_lite.py', src)
+      // Import pandas once here so its start-up notices do not land in a lesson's output
+      py.runPython('import warnings; warnings.simplefilter("ignore", DeprecationWarning); import pandas')
+      for (const mod of MODULES) {
+        const res = await fetch(`py/${mod}`)
+        if (!res.ok) throw new Error(`Could not load ${mod}`)
+        py.FS.writeFile(`/home/pyodide/${mod}`, await res.text())
+      }
       return py
     })()
     ready.catch(() => { ready = undefined })

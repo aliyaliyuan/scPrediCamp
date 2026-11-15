@@ -44,7 +44,7 @@ export default function App() {
     return (
       <>
         <TopBar done={done} showAll />
-        <Lesson lesson={LESSONS.find((l) => l.n === n)} onComplete={() => complete(n)} />
+        <Lesson key={n} lesson={LESSONS.find((l) => l.n === n)} onComplete={() => complete(n)} />
       </>
     )
   }

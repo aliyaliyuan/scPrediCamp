@@ -7,8 +7,8 @@ export const LESSONS = [
   { n: 3, part: 1, title: 'Get epigenomic features from DNA sequence', file: 'ctPred/ctPred_preprocess.py', mode: 'replay' },
   { n: 4, part: 1, title: 'Train a ctPred model for each cell type', file: 'ctPred/ctPred.py', mode: 'replay' },
   { n: 5, part: 1, title: 'Turn predictions into TWAS models', file: 'NEXTFLOW/run_batches.sh', mode: 'replay' },
-  { n: 6, part: 2, title: 'Run S-PrediXcan for one protein and one cell type', file: 'spredixcan/01run_predixcan.py', mode: 'live' },
-  { n: 7, part: 2, title: 'Combine and filter results', file: 'combine.sh, 02format_output.R', mode: 'live' },
+  { n: 6, part: 2, title: 'Run S-PrediXcan for one protein and one cell type', file: 'spredixcan/01run_predixcan.py', mode: 'live', next: 7 },
+  { n: 7, part: 2, title: 'Combine and filter results', file: 'combine.sh, 02format_output.R', mode: 'live', next: 8 },
   { n: 8, part: 2, title: 'Label cis and trans associations', file: '03mapping.R', mode: 'live' },
   { n: 9, part: 2, title: 'Look at a locus', file: 'built-in regional plot', mode: 'live' },
 ]

@@ -118,3 +118,7 @@ tr.hit .zbar { background: var(--cyan); }
 .verdict.good { color: var(--ok); }
 .verdict.bad { color: var(--warn); }
 .nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.terms { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .5rem 1rem; margin: 0; font-size: .93rem; }
+.terms dt { color: var(--cyan); white-space: nowrap; }
+.terms dd { margin: 0; color: var(--soft); }
+th.text, td.text { text-align: left; }
