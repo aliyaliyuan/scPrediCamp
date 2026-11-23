@@ -1,7 +1,7 @@
 # Gene and protein coordinates for the tutorial's sample genes (lesson 8).
 # Same logic as spredixcan/03mapping.R, limited to the genes in the sample models.
 # Coordinates are GRCh38, the build used by the UKB-PPP Olink protein map.
-# Run from tutorial/:  Rscript scripts/make_mapping_sample.R
+# Run from the repo root:  Rscript scripts/make_mapping_sample.R
 suppressMessages({library(biomaRt); library(dplyr); library(data.table); library(DBI); library(RSQLite)})
 out <- "public/sample_data/mapping"
 dir.create(out, showWarnings = FALSE, recursive = TRUE)

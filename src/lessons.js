@@ -22,3 +22,6 @@ export const MODE_LABEL = { live: 'Live', replay: 'Replay', read: 'Read' }
 
 // The single-cell atlas the liver models were built from (CELLxGENE collection).
 export const ATLAS_URL = 'https://cellxgene.cziscience.com/collections/059202e1-1f1b-483f-9151-f3a25a380c39'
+
+// The scripts-only version of the pipeline.
+export const PIPELINE_URL = 'https://github.com/aliyaliyuan/PlasmaXcan'

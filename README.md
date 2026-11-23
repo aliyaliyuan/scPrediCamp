@@ -1,24 +1,38 @@
-# scPrediXcan tutorial (web app)
+# scPrediCamp
 
-An interactive, in-browser walkthrough of the scPrediXcan pipeline. React + Vite, with
-Python running in the browser through Pyodide. No server is needed.
+An interactive, in-browser course on **scPrediXcan**, the cell-type-specific TWAS framework
+(Zhou et al. 2025, Cell Genomics, https://doi.org/10.1016/j.xgen.2025.100875). It walks from
+single-cell RNA-seq to cell-type expression models to gene-level associations with GWAS
+summary statistics, using liver cell types and UK Biobank plasma-protein GWAS as the example.
+Real Python runs in the browser on small sample data, so there is nothing to install.
+
+**Open the course:** https://aliyaliyuan.github.io/scPrediCamp/
+
+Want the plain scripts and a written pipeline description instead? See
+[PlasmaXcan](https://github.com/aliyaliyuan/PlasmaXcan).
 
 ## Run it locally
 
 ```bash
-cd tutorial
 npm install
 npm run dev        # open the printed URL
 ```
 
-`npm run build` writes the static site to `tutorial/dist`. Pushing to the `ui` branch builds
-and publishes it to GitHub Pages (`.github/workflows/pages.yml`). One-time setup:
-repo Settings -> Pages -> Source: GitHub Actions.
+`npm run build` writes the static site to `dist/`. Every push to `main` builds and publishes
+it to GitHub Pages (`.github/workflows/pages.yml`). One-time setup: repo Settings -> Pages ->
+Source: GitHub Actions.
+
+Built with React + Vite; Python runs in the browser through Pyodide (loaded from the jsDelivr
+CDN; set `VITE_PYODIDE_BASE` at build time to use another copy).
 
 ## Layout
 
 | path | what it is |
 |---|---|
+| `src/lessons/Lesson1.jsx` | How scPrediXcan works: paper and protocol summary, figures, quiz |
+| `src/Quiz.jsx` | multiple-choice quiz used by lesson 1 |
+| `public/papers/` | the scPrediXcan article and protocol (open access, CC BY 4.0) |
+| `public/scripts/ctPred_preprocess.py` | copy of `ctPred/ctPred_preprocess.py` from PlasmaXcan, shown in lesson 3 |
 | `src/lessons.js` | the course outline (nine lessons, two parts) |
 | `src/built.js` | lessons that are built; add a component here to make its row clickable |
 | `src/LiveLesson.jsx` | shared lesson layout: reading pane, editable Python, output, results table, checkpoint |

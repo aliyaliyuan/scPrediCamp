@@ -1,5 +1,5 @@
 import { BUILT } from './built.js'
-import { ATLAS_URL, LESSONS, MODE_LABEL, PARTS } from './lessons.js'
+import { ATLAS_URL, PIPELINE_URL, LESSONS, MODE_LABEL, PARTS } from './lessons.js'
 
 function Row({ l, done }) {
   const built = Boolean(BUILT[l.n])
@@ -28,6 +28,10 @@ export default function Course({ done }) {
         <p className="lead">
           Nine lessons follow the pipeline in order. You can train your own models, use the liver
           atlas models as they are, or skip ahead and run your GWAS.
+        </p>
+        <p className="lead">
+          Prefer plain scripts and a written pipeline description? They live in the{' '}
+          <a href={PIPELINE_URL} target="_blank" rel="noreferrer">PlasmaXcan repository</a>.
         </p>
       </div>
 
