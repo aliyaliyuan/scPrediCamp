@@ -2,7 +2,7 @@
 // replay = recorded run of a GPU/cluster step, read = concepts.
 // A lesson becomes clickable once it has a `component` registered in App.jsx.
 export const LESSONS = [
-  { n: 1, part: 1, title: 'How scPrediXcan works', file: 'the whole pipeline on one diagram', mode: 'read' },
+  { n: 1, part: 1, title: 'How scPrediXcan works', file: 'the scPrediXcan paper and protocol, with a quiz', mode: 'read', next: 2 },
   { n: 2, part: 1, title: 'Pseudobulk your single-cell data', file: 'pseudobulk_from_h5ad.py', mode: 'live', next: 3 },
   { n: 3, part: 1, title: 'Add epigenomic features from DNA sequence', file: 'ctPred/ctPred_preprocess.py', mode: 'live' },
   { n: 4, part: 1, title: 'Train a ctPred model for each cell type', file: 'ctPred/ctPred.py', mode: 'replay' },
