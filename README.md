@@ -11,7 +11,7 @@ Real Python runs in the browser on small sample data, so there is nothing to ins
 Want the plain scripts and a written pipeline description instead? See
 [PlasmaXcan](https://github.com/aliyaliyuan/PlasmaXcan).
 
-## Run it locally
+## How to run it locally (on your device)
 
 ```bash
 npm install
