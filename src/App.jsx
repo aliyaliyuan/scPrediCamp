@@ -60,7 +60,7 @@ export default function App() {
     <section className="welcome">
       <Helix />
       <div className="welcome-copy">
-        <h1>Welcome to scPrediXcan</h1>
+        <h1>Welcome to scPrediCamp</h1>
         <a className="pill" href="#course">Click to begin</a>
       </div>
     </section>
