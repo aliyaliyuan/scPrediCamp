@@ -1,12 +1,12 @@
 # scPrediCamp
 
+**Open the course:** https://aliyaliyuan.github.io/scPrediCamp/
+
 An interactive, in-browser course on **scPrediXcan**, the cell-type-specific TWAS framework
 (Zhou et al. 2025, Cell Genomics, https://doi.org/10.1016/j.xgen.2025.100875). It walks from
 single-cell RNA-seq to cell-type expression models to gene-level associations with GWAS
 summary statistics, using liver cell types and UK Biobank plasma-protein GWAS as the example.
 Real Python runs in the browser on small sample data, so there is nothing to install.
-
-**Open the course:** https://aliyaliyuan.github.io/scPrediCamp/
 
 Want the plain scripts and a written pipeline description instead? See
 [PlasmaXcan](https://github.com/aliyaliyuan/PlasmaXcan).
